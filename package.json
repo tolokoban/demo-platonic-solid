@@ -1,0 +1,47 @@
+{
+    "name": "grenier",
+    "version": "1.0.515",
+    "description": "Articles concernant majoritairement l'algorithmie",
+    "main": "index.js",
+    "dependencies": {
+        "colors": "^1.1.2",
+        "jasmine": "^2.3.2",
+        "readline-sync": "^1.2.21",
+        "toloframework": "^0.30.14"
+    },
+    "devDependencies": {
+        "toloframework": "^0.30.8"
+    },
+    "scripts": {
+        "tfw": "node node_modules/toloframework/bin/tfw.js build dev watch",
+        "clean": "node node_modules/toloframework/bin/tfw.js clean",
+        "release": "node node_modules/toloframework/bin/tfw.js build version clean",
+        "test": "jasmine",
+        "test:dbg": "node --debug-brk node_modules/jasmine/bin/jasmine"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/tolokoban/grenier.git"
+    },
+    "keywords": [
+        "algorithme"
+    ],
+    "author": "Tolokoban",
+    "license": "GPL-3.0",
+    "bugs": {
+        "url": "https://github.com/tolokoban/grenier/issues"
+    },
+    "homepage": "https://github.com/tolokoban/grenier",
+    "tfw": {
+        "modules": [],
+        "compile": {
+            "type": "firefoxos",
+            "files": [
+                "\\.html$",
+                "article/*/\\.html$"
+            ]
+        },
+        "output": "gh-pages"
+    },
+    "reservedModules": []
+}
