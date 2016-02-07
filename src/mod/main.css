@@ -1,0 +1,30 @@
+body.main {
+    background-repeat:   no-repeat;
+    background-position: 50% 50%;
+    background-size:     cover;
+    background-image:    url(main/back.jpg);
+    color: #DAB23A;
+    line-height: 150%;
+}
+
+
+#main {
+    margin: 0 10vw;
+}
+
+span.hide {
+    opacity: 0;
+}
+
+span {
+    opacity: 1;
+    transition: opacity .6s;
+}
+
+div.soon {
+    font-weight: 300;
+    font-size: 70%;
+    color: #000;
+    text-shadow: none;
+    margin-top: 2em;
+}
