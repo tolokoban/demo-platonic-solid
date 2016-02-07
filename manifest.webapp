@@ -1,0 +1,14 @@
+{
+  "launch_path": "/index.html",
+  "developer": {
+    "name": "Tolokoban",
+    "url": "https://github.com/tolokoban/demo-platonic-solid"
+  },
+  "icons": {
+    "128": "/icon-128.png",
+    "512": "/icon-512.png"
+  },
+  "name": "demo-platonic-solid",
+  "version": "0.0.0",
+  "description": "How you can construct Platonic Solids"
+}
