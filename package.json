@@ -1,37 +1,37 @@
 {
-  "name": "demo-platonic-solid",
-  "version": "0.0.0",
-  "description": "How you can construct Platonic Solids",
-  "devDependencies": {
-    "toloframework": "^0.30.18"
-  },
-  "scripts": {
-    "tfw": "node node_modules/toloframework/bin/tfw.js build dev watch",
-    "clean": "node node_modules/toloframework/bin/tfw.js clean",
-    "release": "node node_modules/toloframework/bin/tfw.js build version clean"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/tolokoban/demo-platonic-solid.git"
-  },
-  "keywords": [
-    "algorithme"
-  ],
-  "author": "Tolokoban",
-  "license": "GPL-3.0",
-  "bugs": {
-    "url": "https://github.com/tolokoban/demo-platonic-solid/issues"
-  },
-  "homepage": "https://github.com/tolokoban/demo-platonic-solid",
-  "tfw": {
-    "modules": [],
-    "compile": {
-      "type": "firefoxos",
-      "files": [
-        "\\.html$"
-      ]
+    "name": "demo-platonic-solid",
+    "version": "0.0.1",
+    "description": "How you can construct Platonic Solids",
+    "devDependencies": {
+        "toloframework": "^0.30.18"
     },
-    "output": "gh-pages"
-  },
-  "reservedModules": []
+    "scripts": {
+        "tfw": "node node_modules/toloframework/bin/tfw.js build dev watch",
+        "clean": "node node_modules/toloframework/bin/tfw.js clean",
+        "release": "node node_modules/toloframework/bin/tfw.js build version clean"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/tolokoban/demo-platonic-solid.git"
+    },
+    "keywords": [
+        "algorithme"
+    ],
+    "author": "Tolokoban",
+    "license": "GPL-3.0",
+    "bugs": {
+        "url": "https://github.com/tolokoban/demo-platonic-solid/issues"
+    },
+    "homepage": "https://github.com/tolokoban/demo-platonic-solid",
+    "tfw": {
+        "modules": [],
+        "compile": {
+            "type": "firefoxos",
+            "files": [
+                "\\.html$"
+            ]
+        },
+        "output": "gh-pages"
+    },
+    "reservedModules": []
 }
