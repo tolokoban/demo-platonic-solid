@@ -9,6 +9,6 @@
     "512": "/icon-512.png"
   },
   "name": "demo-platonic-solid",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "How you can construct Platonic Solids"
 }
