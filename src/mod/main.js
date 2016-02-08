@@ -24,6 +24,7 @@ function start() {
         new PlatonSolide({faces: 4, width: W, height: H}),
         new PlatonSolide({faces: 6, width: W, height: H}),
         new PlatonSolide({faces: 8, width: W, height: H}),
+        new PlatonSolide({faces: 20, width: W, height: H}),
         new PlatonDodeca({width: Math.floor( W * 1.5 ), height: Math.floor( H * 1.5 )})
     ];
 

@@ -2,11 +2,11 @@ exports.config={
     name:"demo-platonic-solid",
     description:"How you can construct Platonic Solids",
     author:"Tolokoban",
-    version:"0.0.0",
+    version:"0.0.2",
     major:0,
     minor:0,
-    revision:0,
-    date:new Date(2016,1,7,11,36,13)
+    revision:2,
+    date:new Date(2016,1,8,22,52,14)
 };
 var currentLang = null;
 exports.lang = function(lang) {
