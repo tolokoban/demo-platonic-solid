@@ -39,8 +39,6 @@ var Dodeca1 = function(options) {
     this.scene.add( light );
 
     this.start();
-
-    this.css('float', 'right');
 };
 
 // Extension of Widget.

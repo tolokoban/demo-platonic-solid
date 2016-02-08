@@ -1,5 +1,5 @@
 "use strict";
-var TreeCanvas = require("three.canvas");
+var ThreeCanvas = require("three.canvas");
 var Rotator = require("three.rotator");
 
 
@@ -16,7 +16,7 @@ var Solide = function(options) {
     if (typeof options.height === 'undefined') options.height = 150;
 
 
-    TreeCanvas.call(this, {width: options.width, height: options.height});
+    ThreeCanvas.call(this, {width: options.width, height: options.height});
     this.addClass("platon-solide");
 
     this.camera.position.z = 2.7;
@@ -40,14 +40,14 @@ var Solide = function(options) {
 };
 
 // Extension of Widget.
-Solide.prototype = Object.create(TreeCanvas.prototype);
+Solide.prototype = Object.create(ThreeCanvas.prototype);
 Solide.prototype.constructor = Solide;
 
 /**
  * @return void
  */
 Solide.prototype.onRender = function(time, delta) {
-    TreeCanvas.prototype.onRender.call( this, time, delta );
+    ThreeCanvas.prototype.onRender.call( this, time, delta );
 
     this._rotator.rotate( time );
 
@@ -119,6 +119,131 @@ Solide.prototype.getDodecahedronGeometry = function(radius) {
 };
 
 
+Solide.prototype.getIcosahedronGeometryA = function(radius) {
+    if (typeof radius === 'undefined') radius = 1;
+
+    var k = radius;
+    var vertices = [[0,k,0]];
+    var faces = [];
+    var i, ang;
+    var r = .3 * k;
+    var y = .2;
+
+    for ( i=0 ; i<5 ; i++ ) {
+        ang = i * 2 * Math.PI / 5;
+        vertices.push( [r * Math.cos( ang ), y, r * Math.sin( ang )] );
+        if (i < 4) {
+            faces.push( [0, i + 2, i + 1] );
+        } else {
+            faces.push( [0, 1, 5] );
+        }
+    }
+
+    for ( i=0 ; i<5 ; i++ ) {
+        ang = Math.PI / 5 + i * 2 * Math.PI / 5;
+        vertices.push( [r * Math.cos( ang ), -y, r * Math.sin( ang )] );
+        if (i < 4) {
+            faces.push( [11, i + 6, i + 7] );
+        } else {
+            faces.push( [11, 10, 6] );
+        }
+    }
+    vertices.push( [0,-k,0] );
+
+    return {
+        vertices: vertices,
+        faces: faces
+    };
+};
+
+
+Solide.prototype.getIcosahedronGeometry = function(radius) {
+    if (typeof radius === 'undefined') radius = 1;
+
+    var k = radius;
+    var vertices = [[0,k,0]];
+    var faces = [];
+    var i, ang;
+    var r = .9 * k;
+    var y = 1 - r * Math.sqrt( 4 * Math.sin(Math.PI / 5) * Math.sin(Math.PI / 5) - 1 );
+
+    for ( i=0 ; i<5 ; i++ ) {
+        ang = i * 2 * Math.PI / 5;
+        vertices.push( [r * Math.cos( ang ), y, r * Math.sin( ang )] );
+        if (i < 4) {
+            faces.push( [0, i + 2, i + 1] );
+        } else {
+            faces.push( [0, 1, 5] );
+        }
+    }
+
+    for ( i=0 ; i<5 ; i++ ) {
+        ang = Math.PI / 5 + i * 2 * Math.PI / 5;
+        vertices.push( [r * Math.cos( ang ), -y, r * Math.sin( ang )] );
+        if (i < 4) {
+            faces.push( [11, i + 6, i + 7] );
+        } else {
+            faces.push( [11, 10, 6] );
+        }
+    }
+    vertices.push( [0,-k,0] );
+
+    var j, a1, a2, b6, b7;
+    for ( i=0 ; i<5 ; i++ ) {
+        j = (i + 2) % 5;
+        a1 = j + 1;
+        a2 = (j + 1) % 5 + 1;
+        b6 = j + 6;
+        b7 = (j + 1) % 5 + 6;
+        faces.push( [a1, a2, b6] );
+        faces.push( [a2, b7, b6] );
+    }
+
+    return {
+        vertices: vertices,
+        faces: faces
+    };
+};
+
+
+Solide.prototype.getIcosahedronGeometryB = function(radius) {
+    if (typeof radius === 'undefined') radius = 1;
+
+    var k = radius;
+    var vertices = [[0,k,0]];
+    var faces = [];
+    var i, ang;
+    var r = .9 * k;
+    var y = 1 - r * Math.sqrt( 4 * Math.sin(Math.PI / 5) * Math.sin(Math.PI / 5) - 1 );
+
+    for ( i=0 ; i<5 ; i++ ) {
+        ang = i * 2 * Math.PI / 5;
+        vertices.push( [r * Math.cos( ang ), y, r * Math.sin( ang )] );
+        if (i < 4) {
+            faces.push( [0, i + 2, i + 1] );
+        } else {
+            faces.push( [0, 1, 5] );
+        }
+    }
+
+    for ( i=0 ; i<5 ; i++ ) {
+        ang = Math.PI / 5 + i * 2 * Math.PI / 5;
+        vertices.push( [r * Math.cos( ang ), -y, r * Math.sin( ang )] );
+        if (i < 4) {
+            faces.push( [11, i + 6, i + 7] );
+        } else {
+            faces.push( [11, 10, 6] );
+        }
+    }
+    vertices.push( [0,-k,0] );
+
+    return {
+        vertices: vertices,
+        faces: faces
+    };
+};
+
+
 /**
  * @return void
  */
@@ -161,6 +286,27 @@ Solide.prototype.createSolid = function(nbFaces) {
         opt.colors = colors;
         this._blinker = this.createMesh( opt );
         mesh.add( this._blinker );        
+    }
+    else if (nbFaces == '20a') {
+        mesh = new THREE.Group();
+        opt = this.getIcosahedronGeometryA();
+        opt.colors = colors;
+        opt.nbColors = 5;
+        mesh.add( this.createMesh( opt ) );
+    }
+    else if (nbFaces == '20b') {
+        mesh = new THREE.Group();
+        opt = this.getIcosahedronGeometryB();
+        opt.colors = colors;
+        opt.nbColors = 5;
+        mesh.add( this.createMesh( opt ) );
+    }
+    else if (nbFaces == 20) {
+        mesh = new THREE.Group();
+        opt = this.getIcosahedronGeometry();
+        opt.colors = colors;
+        opt.nbColors = 5;
+        mesh.add( this.createMesh( opt ) );
     }
 
     return mesh;
